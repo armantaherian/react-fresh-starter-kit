@@ -10,14 +10,18 @@ module.exports = {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)?$/,
         exclude: ['node_modules'],
-        use: [{
-          loader: 'babel-loader'
-        }]
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true,
+        },
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
