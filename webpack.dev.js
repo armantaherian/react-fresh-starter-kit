@@ -4,8 +4,15 @@ const common = require('./webpack.common.js')
 module.exports = merge(common, {
   mode: 'development',
   devServer: {
+    clientLogLevel: "error",
+    compress: true,
+    stats: "errors-only",
     host: 'localhost',
     port: 4000,
-    open: true
+    open: true,
+    overlay: {
+      warnings: true,
+      errors: true
+    }
   }
 })
