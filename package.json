@@ -1,0 +1,65 @@
+{
+  "name": "react-fresh-starter-kit",
+  "version": "0.1.0",
+  "description": "A simple and fresh React boilerplate to start",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "test": "jest ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/armantaherian/react-fresh-starter-kit.git"
+  },
+  "keywords": [
+    "react",
+    "webpack",
+    "babel",
+    "sass",
+    "scss",
+    "css",
+    "redux",
+    "react-router",
+    "react-redux",
+    "react-router-history"
+  ],
+  "author": "Arman Taherian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/armantaherian/react-fresh-starter-kit/issues"
+  },
+  "homepage": "https://github.com/armantaherian/react-fresh-starter-kit#readme",
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^22.4.4",
+    "node-sass": "^4.9.0",
+    "react-test-renderer": "^16.3.2",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.2"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./test/enzyme.setup.js"
+  }
+}
