@@ -11,3 +11,11 @@ body {
   color: #eee;
   font-family: system;
 }
+
+a {
+  color: #fff;
+
+  &:hover {
+    color: darken(#fff, 15%);
+  }
+}
