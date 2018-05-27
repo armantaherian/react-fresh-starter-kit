@@ -1,7 +1,8 @@
-import React from 'react'
-import { push } from 'react-router-redux'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import React from 'react';
+import { push } from 'react-router-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
 const About = props => (
   <div>
@@ -10,17 +11,23 @@ const About = props => (
     <p>Count was: {props.count}</p>
     <button onClick={() => props.changePage()}>Back to homepage</button>
   </div>
-)
+);
+
+About.propTypes = {
+  count: propTypes.number,
+  changePage: propTypes.func
+};
 
 const mapStateToProps = state => ({
   count: state.counter.count,
-})
+});
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-      changePage: () => push('/')
+  bindActionCreators(
+    {
+      changePage: () => push('/'),
     },
-    dispatch
+    dispatch,
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(About)
+export default connect(mapStateToProps, mapDispatchToProps)(About);

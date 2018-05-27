@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import Hello from '../Hello'
-import Counter from '../Counter'
+import Hello from '../Hello';
+import Counter from '../Counter';
 
 const Home = () => (
   <div>
@@ -9,6 +9,6 @@ const Home = () => (
     <h1>Welcome to My Starter kit</h1>
     <Counter />
   </div>
-)
+);
 
-export default Home
+export default Home;

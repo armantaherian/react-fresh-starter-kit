@@ -1,12 +1,13 @@
 // https://github.com/notrab/create-react-app-redux/blob/master/src/containers/home/index.js
-import React from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 import {
   increment,
   incrementAsync,
   decrement,
-  decrementAsync
+  decrementAsync,
 } from '../../modules/counter';
 
 const Counter = props => (
@@ -34,13 +35,23 @@ const Counter = props => (
       </button>
     </div>
   </section>
-)
+);
+
+Counter.propTypes = {
+  count: propTypes.number,
+  isDecrementing: propTypes.bool,
+  isIncrementing: propTypes.bool,
+  increment: propTypes.func,
+  incrementAsync: propTypes.func,
+  decrement: propTypes.func,
+  decrementAsync: propTypes.func,
+};
 
 const mapStateToProps = state => ({
   count: state.counter.count,
   isIncrementing: state.counter.isIncrementing,
-  isDecrementing: state.counter.isDecrementing
-})
+  isDecrementing: state.counter.isDecrementing,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -48,9 +59,9 @@ const mapDispatchToProps = dispatch =>
       increment,
       incrementAsync,
       decrement,
-      decrementAsync
+      decrementAsync,
     },
-    dispatch
-  )
+    dispatch,
+  );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter)
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
