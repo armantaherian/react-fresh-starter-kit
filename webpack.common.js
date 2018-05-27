@@ -1,33 +1,28 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const path = require('path')
+/* eslint import/no-extraneous-dependencies: "off" */
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
+const path = require('path');
 
 module.exports = {
+  target: 'web',
   entry: {
     main: './src/index.js',
   },
   output: {
-    filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: '[name].[hash].js'
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx', '.json']
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)?$/,
-        exclude: ['node_modules'],
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true,
-        },
-      },
-      {
-        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader', 'eslint-loader']
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
@@ -90,26 +85,26 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.s(a|c)ss$/,
-        use: [{
-          loader: 'style-loader',
-        }, {
-          loader: 'css-loader',
-        }, {
-          loader: 'sass-loader',
-        }],
-      },
     ],
   },
   plugins: [
+    new WebpackMd5Hash(),
     new HtmlWebPackPlugin({
       template: 'index.html',
       minify: {
         removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
       },
+      inject: true,
     }),
     new CleanWebpackPlugin(['dist']),
-    new UglifyJsPlugin(),
   ],
 }

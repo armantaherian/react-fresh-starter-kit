@@ -1,4 +1,39 @@
 {
-  "presets": ["env", "react", "stage-2"],
-  "plugins": ["react-hot-loader/babel"]
+  "env": {
+    "development": {
+      "presets": [
+        "env",
+        "react",
+        "stage-1"
+      ]
+    },
+    "production": {
+      "presets": [
+        [
+          "env",
+          {
+            "es2015": {
+              "modules": false
+            },
+            "targets": {
+              "ie": 9,
+              "uglify": true
+            }
+          }
+        ],
+        "react",
+        "stage-1"
+      ],
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    },
+    "test": {
+      "presets": [
+        "env",
+        "react",
+        "stage-1"
+      ]
+    }
+  }
 }
